@@ -65,12 +65,7 @@ def change_data():
             number = input('Введите новый телефон: ')
         elif command == 4:
             adress = input('Введите новую фамилию: ')
-        
-        # data = make_tuple(files[0])
-        # for i in range(len(data)):
-        #     print(i, data[i][2])
-
-
+    
         for file in files:
             data = make_list(file)
             for i in range(len(data)):
@@ -92,3 +87,31 @@ def change_data():
                     for i in range(len(data)):
                         f.write(f"{data[i][0]};{data[i][1]};{data[i][2]};{data[i][3]}\n\n")
            
+def delete_data():
+    phone_number = input('Введите номер телефона для поиска записи: ')
+    files = data_search(phone_number)
+
+    while files == 0:
+        print ('Запись не найдена, возможно вы ввели неверный номер телефона или не телефон')
+        phone_number = input('Введите номер телефона для поиска записи: ')
+        files = data_search(phone_number)
+
+    if files != 0:
+        command = input('Вы действительно хотите удалить запись с таким номером телефона из справочника? Введите да или нет: ')
+        if command in ['нет', 'Нет']:
+            exit()
+        elif command in ['да', 'Да']:
+            for file in files:
+                data = make_list(file)
+                for i in range(len(data)):
+                    if data[i][2] == phone_number:
+                        data.pop(i)
+
+                with open(file, 'w', encoding='utf-8') as f:
+                    if  file == 'data_first_variant.csv':
+                        for i in range(len(data)):
+                            f.write(f"{data[i][0]}\n{data[i][1]}\n{data[i][2]}\n{data[i][3]}\n\n")   
+                    elif file == 'data_second_variant.csv':
+                        for i in range(len(data)):
+                            f.write(f"{data[i][0]};{data[i][1]};{data[i][2]};{data[i][3]}\n\n")
+

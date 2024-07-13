@@ -30,8 +30,6 @@ def make_list(file_path):
         if current_list:
             big_list.append(current_list)
     
-    #print(tuples_list)
-    
     return big_list
 
 def data_search(phone_number):
@@ -47,11 +45,3 @@ def data_search(phone_number):
         return 0
     else:
         return found_files
-
-
-#print(make_tuple('data_first_variant.csv'))
-
-# with open('data_second_variant.csv', 'r', encoding='utf-8') as f:
-#         data_second = f.readlines()
-
-print(data_search('7000'))
