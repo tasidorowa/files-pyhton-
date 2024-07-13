@@ -1,7 +1,7 @@
 from logger import input_data, print_data, change_data, delete_data
 
 def interface():
-    print('Добрый день! Это бот-справочник Таня\n1: Записать данные\n2: Вывести данные')
+    print('Добрый день! Это бот-справочник Таня\n1: Записать данные\n2: Вывести данные\n3: Изменить данные\n4: Удалить данные\n')
     command = int(input('Введите номер команды: '))
 
     while command != 1 and command != 2 and command != 3 and command != 4:
